@@ -48,6 +48,7 @@ public class FakeEmailService implements EmailService {
     emails.add(new Email("John", JROD_PIC, "Final assessment", "Good luck everyone!",
         makeDate("12/10/15")));
     emails.add(new Email("Doge", DOGE_PIC, "Much Android", LOREM_IPSUM, makeDate("12/10/15")));
+      emails.add(new Email("John",RANDOM_PIC," I hope I don't fail!", LOREM_IPSUM, makeDate("12/13/15")));
   }
 
   // this method is used by the application to 'load' mail
@@ -58,13 +59,14 @@ public class FakeEmailService implements EmailService {
   public boolean hasNewMail() {
     // TODO - 30% of the time you should generate a new email
     // hint: this class has a member variable that generates random numbers
-    return false;
+      return random.nextInt(100) <= 30;
   }
 
   @NonNull private Email generateNewRandomEmail() {
     // TODO - return a new email
     // hint: use RANDOM_PIC above
-    return null;
+      //added another e-mail to the lists that uses the RANDOM_PIC
+    return getEmails().get(random.nextInt());
   }
 
   // utility method
